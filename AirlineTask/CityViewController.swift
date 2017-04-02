@@ -12,16 +12,12 @@ class CityViewController: BaseBlueViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var airportsLabel: UILabel!
     @IBOutlet weak var cityImageView: UIImageView!
     
-    var currentCity: String?
+    var presentationModel = CitiesPresentationModel()
     let unwindSegueId = "UnwinedToBooking"
-    
     let cellName = String(describing: CityTableViewCell.self)
-    
-    var isSearching = false
-    var data = ["Москва", "Санкт-Петербург", "Калининград", "Краснодар", "Новосибирск"]
-    var filteredData = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,44 +27,47 @@ class CityViewController: BaseBlueViewController {
         tableView.register(UINib(nibName: cellName, bundle: nil), forCellReuseIdentifier: cellName)
         tableView.rowHeight = 65
         
-        cityImageView.image = UIImage(named: "GlobalDepartureCity")?.withRenderingMode(.alwaysTemplate)
-        cityTextField.delegate = self
-        
+        let image = UIImage(named: presentationModel.cityType.imageName)!
+        cityImageView.image = image.withRenderingMode(.alwaysTemplate)
+        cityTextField.placeholder = presentationModel.cityType.placeholder
+
+        presentationModel.delegate = self
+        presentationModel.updateData()
     }
 
     @IBAction func textFieldDidChange(_ sender: UITextField) {
         if sender == cityTextField {
             let cityPattern = cityTextField.text?.lowercased() ?? ""
-            if !cityPattern.isEmpty {
-                filteredData = data.filter { $0.lowercased().hasPrefix(cityPattern) }
-            } else {
-                filteredData = data
-            }
-            tableView.reloadData()
+            presentationModel.filterData(cityPattern)
         }
     }
     
     @IBAction func closeSelection(_ sender: Any) {
-        performSegue(withIdentifier: unwindSegueId, sender: self)
-        //dismiss(animated: true, completion: nil)
+        clearState()
     }
     
+    func clearState() {
+        cityTextField.endEditing(true)
+        performSegue(withIdentifier: unwindSegueId, sender: self)
+    }
 }
 
-extension CityViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        isSearching = true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        isSearching = false
-        filteredData.removeAll()
+extension CityViewController: CitiesPresentationDelegate {
+    func reloadData() {
+        tableView.reloadData()
     }
 }
 
 extension CityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        currentCity = data[indexPath.row]
+        presentationModel.selectedCity = presentationModel.filteredData[indexPath.row]
+        airportsLabel.text = presentationModel.selectedCity!.airports
+        cityTextField.text = presentationModel.selectedCity!.name
+        clearState()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        cityTextField.endEditing(true)
     }
 }
 
@@ -78,16 +77,12 @@ extension CityViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return isSearching ? filteredData.count : data.count
-        } else {
-            return 0
-        }
+        return section == 0 ? presentationModel.filteredData.count : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellName, for: indexPath) as! CityTableViewCell
-        cell.cityView.cityLabel.text = isSearching ? filteredData[indexPath.row] : data[indexPath.row]
+        cell.fill(with: presentationModel.filteredData[indexPath.row])
         return cell
     }
 }

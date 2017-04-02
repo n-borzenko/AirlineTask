@@ -12,4 +12,8 @@ class CityTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cityView: CityView!
     
+    func fill(with viewModel: CityViewModel) {
+        cityView.airportsLabel.text = viewModel.airports
+        cityView.cityLabel.text = viewModel.name
+    }
 }

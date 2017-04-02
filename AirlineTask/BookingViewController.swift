@@ -49,31 +49,24 @@ class BookingViewController: BaseBlueViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == selectCitySegueId {
             let destinationVC = (segue.destination as! UINavigationController).viewControllers[0] as! CityViewController
-            destinationVC.currentCity = "Мск"
+            destinationVC.presentationModel.cityType = .departure
         }
         
         if segue.identifier == showWeatherSegueId {
             let destinationVC = (segue.destination as! UINavigationController).viewControllers[0] as! WeatherViewController
             
-            let from = CityViewModel()
-            from.latitude = 55.439998626708984
-            from.longitude = 37.56999969482422
-            from.name = "Podolsk"
-                
-            let to = CityViewModel()
-            to.latitude = 55.709999084472656
-            to.longitude = 38.34000015258789
-            to.name = "Elektrougli"
-            
-            destinationVC.forwardController.presentationModel.city = from
-            destinationVC.backwardController.presentationModel.city = to
+//            destinationVC.forwardController.presentationModel.city = CityViewModel(with: from)
+//            destinationVC.backwardController.presentationModel.city = CityViewModel(with: to)
             destinationVC.isOneWay = false
         }
     }
     
     @IBAction func unwindToBooking(segue: UIStoryboardSegue) {
         let sourceVC = segue.source as! CityViewController
-        print(sourceVC.currentCity!)
+        
+        if let city = sourceVC.presentationModel.selectedCity {
+            print(city.name)
+        }
     }
 }
 

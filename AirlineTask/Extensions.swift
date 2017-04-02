@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 extension WindDirection {
     var description: String {
         switch self {
@@ -22,13 +20,5 @@ extension WindDirection {
         case .west: return "З"
         case .nordWest: return "СЗ"
         }
-    }
-}
-
-class Translator {
-    
-    
-    func pressure(hectopascal: Double) -> Double {
-        return hectopascal * 0.75006375541921
     }
 }

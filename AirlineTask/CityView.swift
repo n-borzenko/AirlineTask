@@ -28,7 +28,6 @@ class CityView: UIView {
         cityLabel = UILabel()
         cityLabel.font = UIFont.boldSystemFont(ofSize: 18.0)
         cityLabel.textColor = UIColor.white
-        cityLabel.text = "Москва"
         addSubview(cityLabel)
         
         cityLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
@@ -39,7 +38,6 @@ class CityView: UIView {
         airportsLabel = UILabel()
         airportsLabel.font = UIFont.systemFont(ofSize: 14.0)
         airportsLabel.textColor = UIColor.white.withAlphaComponent(0.5)
-        airportsLabel.text = "Все аэропорты"
         addSubview(airportsLabel)
         
         airportsLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
