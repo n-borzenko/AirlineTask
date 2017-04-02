@@ -54,8 +54,20 @@ class BookingViewController: BaseBlueViewController {
         
         if segue.identifier == showWeatherSegueId {
             let destinationVC = (segue.destination as! UINavigationController).viewControllers[0] as! WeatherViewController
-            destinationVC.fromCity = "Санкт-Петербург"
-            destinationVC.toCity = "Новосибирск"
+            
+            let from = CityViewModel()
+            from.latitude = 55.439998626708984
+            from.longitude = 37.56999969482422
+            from.name = "Podolsk"
+                
+            let to = CityViewModel()
+            to.latitude = 55.709999084472656
+            to.longitude = 38.34000015258789
+            to.name = "Elektrougli"
+            
+            destinationVC.forwardController.presentationModel.city = from
+            destinationVC.backwardController.presentationModel.city = to
+            destinationVC.isOneWay = false
         }
     }
     

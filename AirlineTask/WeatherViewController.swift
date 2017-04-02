@@ -21,22 +21,22 @@ class WeatherViewController: UIViewController {
     let forwardController = WeatherListViewController()
     let backwardController = WeatherListViewController()
     
-    var fromCity = ""
-    var toCity = ""
+    var isOneWay = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         addChild(controller: forwardController)
         travelTabsView.delegate = self
+        travelTabsView.isBackwardEnabled = !isOneWay
         
         let shadowImage = UIImage(named: "ToolbarBackground")!
         toolBarView.setBackgroundImage(shadowImage, forToolbarPosition: .any, barMetrics: .default)
         
         let planeImage = UIImage(named: "GlobalPlane")!.withRenderingMode(.alwaysTemplate)
         planeImageView.image = planeImage
-        departureCityLabel.text = fromCity
-        arrivalCityLabel.text = toCity
+        departureCityLabel.text = forwardController.presentationModel.city?.name
+        arrivalCityLabel.text = backwardController.presentationModel.city?.name
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()

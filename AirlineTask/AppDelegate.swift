@@ -28,17 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                print(error)
 //            }
 //        }
-        
-                ServicesProvider.instance.weather.getWeatherData(latitude: 36.869998931884, longitude: 55.7200012207031) { result in
-                    switch result {
-                    case .success(let weather):
-                        for item in weather {
-                            print(item)
-                        }
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
 
         
         

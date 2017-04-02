@@ -25,7 +25,6 @@ class WeatherHeaderView: UIView {
     
     func createSubviews() {
         timeLabel = UILabel()
-        timeLabel.text = "00.00"
         addSubview(timeLabel)
         
         timeLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -35,7 +34,6 @@ class WeatherHeaderView: UIView {
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
         
         dateLabel = UILabel()
-        dateLabel.text = "28 апр, пт"
         dateLabel.textAlignment = .right
         dateLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
         dateLabel.textColor = Colors.lightBlue
@@ -48,5 +46,10 @@ class WeatherHeaderView: UIView {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         
         backgroundColor = UIColor.white
+    }
+    
+    func fill(with viewModel: HeaderViewModel) {
+        timeLabel.text = viewModel.time
+        dateLabel.text = viewModel.date
     }
 }

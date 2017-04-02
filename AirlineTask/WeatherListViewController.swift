@@ -10,15 +10,9 @@ import UIKit
 
 class WeatherListViewController: UIViewController {
     
+    var presentationModel = WeatherPresentationModel()
     var tableView: UITableView!
     let cellName = String(describing: WeatherTableViewCell.self)
-    
-    var data = [
-        ["09.00", "12.00", "15.00", "18.00", "21.00", "00.00"],
-        ["03.00", "06.00", "09.00", "12.00", "15.00", "18.00", "21.00", "00.00"],
-        ["03.00", "06.00", "09.00", "12.00"]
-    ]
-    var dates = ["20 апр, чт", "21 апр, пт", "22 апр, сб"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,13 +33,22 @@ class WeatherListViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: cellName, bundle: nil), forCellReuseIdentifier: cellName)
         tableView.sectionFooterHeight = CGFloat.leastNonzeroMagnitude
+        
+        presentationModel.delegate = self
+        presentationModel.updateData()
+    }
+}
+
+extension WeatherListViewController: WeatherPresentationDelegate {
+    func reloadData() {
+        tableView.reloadData()
     }
 }
 
 extension WeatherListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = WeatherHeaderView()
-        headerView.dateLabel.text = dates[section]
+        headerView.fill(with: presentationModel.headers[section])
         return headerView
     }
     
@@ -54,7 +57,7 @@ extension WeatherListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == data[indexPath.section].count - 1 && indexPath.section != data.count - 1 {
+        if indexPath.row == presentationModel.data[indexPath.section].count - 1 {
             return 96
         } else {
             return 126
@@ -64,17 +67,19 @@ extension WeatherListViewController: UITableViewDelegate {
 
 extension WeatherListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return data.count
+        return presentationModel.data.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data[section].count
+        return presentationModel.data[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellName, for: indexPath) as! WeatherTableViewCell
-        cell.timeLabel.isHidden = indexPath.row == data[indexPath.section].count - 1 && indexPath.section != data.count - 1
-        cell.timeLabel.text = data[indexPath.section][indexPath.row]
+        let data = presentationModel.data
+        
+        cell.fill(with: data[indexPath.section][indexPath.row])
+        cell.timeLabel.isHidden = indexPath.row == data[indexPath.section].count - 1
         return cell
     }
 }

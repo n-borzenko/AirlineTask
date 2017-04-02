@@ -12,7 +12,6 @@ import ObjectMapper
 struct Wind {
     var speed: Double!
     var degrees: Double!
-    var direction: WindDirection!
 }
 
 extension Wind: Validatable {
@@ -22,8 +21,6 @@ extension Wind: Validatable {
     mutating func mapping(map: Map) {
         speed <- map["speed"]
         degrees <- map["deg"]
-        
-        direction = WindDirection(degrees: degrees)
     }
     
     func validate() -> Bool {
