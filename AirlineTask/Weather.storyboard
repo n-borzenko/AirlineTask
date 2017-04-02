@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WZN-H5-xaJ">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,16 +18,16 @@
                         <viewControllerLayoutGuide type="bottom" id="37m-4v-3nt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Fh4-iN-oAL">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXU-vm-jBz">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="mTD-di-t8i"/>
                                     <barButtonItem style="plain" id="hmq-cf-Pta">
                                         <view key="customView" contentMode="scaleToFill" id="bvd-cb-W9f">
-                                            <rect key="frame" x="16" y="6" width="343" height="33"/>
+                                            <rect key="frame" x="35" y="5.6666666666666679" width="343" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Шаг 7 из 7. Проверьте данные" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wV-WQ-qDa">
@@ -52,13 +52,13 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lL-xe-nQ8" customClass="TravelTabsView" customModule="AirlineTask" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="zn6-LT-ZYI"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M5l-fA-UuZ">
-                                <rect key="frame" x="0.0" y="84" width="375" height="519"/>
+                                <rect key="frame" x="0.0" y="84" width="414" height="588"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -84,44 +84,40 @@
                             </connections>
                         </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="EdG-Uv-THY">
-                            <rect key="frame" x="46" y="6" width="318" height="33"/>
+                            <rect key="frame" x="55" y="6" width="304" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Откуда" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bnl-c9-I6W">
-                                    <rect key="frame" x="0.0" y="0.0" width="134" height="33"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" red="0.1529411765" green="0.33333333329999998" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Куда" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jf8-4E-peF">
-                                    <rect key="frame" x="184" y="0.0" width="134" height="33"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" red="0.1529411765" green="0.33333333329999998" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZGQ-Nw-es6">
-                                    <rect key="frame" x="144" y="6" width="30" height="20"/>
-                                    <color key="tintColor" red="0.1529411765" green="0.33333333329999998" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="30" id="5wp-Bl-Bnc"/>
-                                        <constraint firstAttribute="height" constant="20" id="Ua2-jx-zfw"/>
-                                    </constraints>
-                                </imageView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="TxX-fx-WFt">
+                                    <rect key="frame" x="0.0" y="0.0" width="304" height="33"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Откуда" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bnl-c9-I6W">
+                                            <rect key="frame" x="0.0" y="7.6666666666666679" width="51.666666666666664" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.1529411765" green="0.33333333329999998" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="30" placeholderIntrinsicHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZGQ-Nw-es6">
+                                            <rect key="frame" x="141.33333333333334" y="6.6666666666666679" width="30" height="20"/>
+                                            <color key="tintColor" red="0.1529411765" green="0.33333333329999998" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Куда" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jf8-4E-peF">
+                                            <rect key="frame" x="269.66666666666674" y="7.6666666666666679" width="34.333333333333314" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.1529411765" green="0.33333333329999998" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="Jf8-4E-peF" firstAttribute="top" secondItem="EdG-Uv-THY" secondAttribute="top" id="F1k-Kr-iVO"/>
-                                <constraint firstItem="ZGQ-Nw-es6" firstAttribute="leading" secondItem="Bnl-c9-I6W" secondAttribute="trailing" constant="10" id="SeK-Br-P5L"/>
-                                <constraint firstItem="ZGQ-Nw-es6" firstAttribute="centerX" secondItem="EdG-Uv-THY" secondAttribute="centerX" id="ZKj-T2-HYP"/>
-                                <constraint firstItem="ZGQ-Nw-es6" firstAttribute="centerY" secondItem="EdG-Uv-THY" secondAttribute="centerY" id="aZV-zF-mbr"/>
-                                <constraint firstItem="Jf8-4E-peF" firstAttribute="leading" secondItem="ZGQ-Nw-es6" secondAttribute="trailing" constant="10" id="gHl-a0-RGv"/>
-                                <constraint firstAttribute="bottom" secondItem="Bnl-c9-I6W" secondAttribute="bottom" id="hn3-WP-FZp"/>
-                                <constraint firstItem="Bnl-c9-I6W" firstAttribute="leading" secondItem="EdG-Uv-THY" secondAttribute="leading" id="mvR-rJ-p4s"/>
-                                <constraint firstAttribute="bottom" secondItem="Jf8-4E-peF" secondAttribute="bottom" id="pRY-KY-weM"/>
-                                <constraint firstItem="Bnl-c9-I6W" firstAttribute="top" secondItem="EdG-Uv-THY" secondAttribute="top" id="uHP-a9-4WF"/>
-                                <constraint firstAttribute="trailing" secondItem="Jf8-4E-peF" secondAttribute="trailing" id="v8v-ng-RGi"/>
+                                <constraint firstAttribute="bottom" secondItem="TxX-fx-WFt" secondAttribute="bottom" id="0wA-3k-yz0"/>
+                                <constraint firstAttribute="trailing" secondItem="TxX-fx-WFt" secondAttribute="trailing" id="DVb-De-T9F"/>
+                                <constraint firstItem="TxX-fx-WFt" firstAttribute="leading" secondItem="EdG-Uv-THY" secondAttribute="leading" id="osp-jU-yco"/>
+                                <constraint firstItem="TxX-fx-WFt" firstAttribute="top" secondItem="EdG-Uv-THY" secondAttribute="top" id="p41-uZ-xmT"/>
                             </constraints>
                         </view>
+                        <barButtonItem key="rightBarButtonItem" id="v0k-SB-hsR"/>
                     </navigationItem>
                     <connections>
                         <outlet property="arrivalCityLabel" destination="Jf8-4E-peF" id="FQa-HR-e1j"/>

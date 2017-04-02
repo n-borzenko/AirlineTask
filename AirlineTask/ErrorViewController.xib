@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ErrorViewController" customModule="AirlineTask" customModuleProvider="target">
+            <connections>
+                <outlet property="errorImageView" destination="ARy-Tf-zaH" id="2ut-2k-XI4"/>
+                <outlet property="errorLabel" destination="iOa-mj-Wsu" id="m3b-d7-mVr"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIL-UG-zb2">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ARy-Tf-zaH">
+                            <rect key="frame" x="10" y="7.5" width="40" height="40"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="hUU-TR-sQz"/>
+                                <constraint firstAttribute="height" constant="40" id="sUJ-nY-NvM"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Очень очень длинное Оповещение про ошибку" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOa-mj-Wsu">
+                            <rect key="frame" x="70" y="5" width="295" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="Td3-Ig-ek9"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.12941176469999999" green="0.28235294119999998" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="ARy-Tf-zaH" firstAttribute="leading" secondItem="CIL-UG-zb2" secondAttribute="leading" constant="10" id="91d-o9-tXk"/>
+                        <constraint firstItem="iOa-mj-Wsu" firstAttribute="centerY" secondItem="CIL-UG-zb2" secondAttribute="centerY" id="MbA-VF-MoT"/>
+                        <constraint firstItem="ARy-Tf-zaH" firstAttribute="centerY" secondItem="CIL-UG-zb2" secondAttribute="centerY" id="Rbn-Fk-wMs"/>
+                        <constraint firstAttribute="trailing" secondItem="iOa-mj-Wsu" secondAttribute="trailing" constant="10" id="XiV-Pc-t2A"/>
+                        <constraint firstAttribute="height" constant="55" id="dZn-uG-Gaa"/>
+                        <constraint firstItem="iOa-mj-Wsu" firstAttribute="leading" secondItem="ARy-Tf-zaH" secondAttribute="trailing" constant="20" id="v3g-ox-khO"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="CIL-UG-zb2" secondAttribute="trailing" id="4N5-Az-YHh"/>
+                <constraint firstItem="CIL-UG-zb2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="K2X-LI-3M3"/>
+                <constraint firstItem="CIL-UG-zb2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Zl2-Tq-azG"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="34.5" y="-244.5"/>
+        </view>
+    </objects>
+</document>

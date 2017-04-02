@@ -223,6 +223,6 @@ class PassengerView: UIView {
     
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 100, height: 120)
+        return CGSize(width: 80, height: 120)
     }
 }

@@ -68,6 +68,6 @@ class TravelDateView: UIView {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 100, height: 50)
+        return CGSize(width: 90, height: 50)
     }
 }

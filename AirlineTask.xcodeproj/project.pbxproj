@@ -35,6 +35,8 @@
 		6E88D89D1E907B2400331D1F /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E88D89B1E907B2400331D1F /* WeatherTableViewCell.swift */; };
 		6E88D89E1E907B2400331D1F /* WeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E88D89C1E907B2400331D1F /* WeatherTableViewCell.xib */; };
 		6E88D8A01E907B9300331D1F /* WeatherHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E88D89F1E907B9300331D1F /* WeatherHeaderView.swift */; };
+		6ED023421E911DC800DB0D7B /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED023401E911DC800DB0D7B /* ErrorViewController.swift */; };
+		6ED023431E911DC800DB0D7B /* ErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6ED023411E911DC800DB0D7B /* ErrorViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		6E88D89B1E907B2400331D1F /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		6E88D89C1E907B2400331D1F /* WeatherTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherTableViewCell.xib; sourceTree = "<group>"; };
 		6E88D89F1E907B9300331D1F /* WeatherHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherHeaderView.swift; sourceTree = "<group>"; };
+		6ED023401E911DC800DB0D7B /* ErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
+		6ED023411E911DC800DB0D7B /* ErrorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +256,8 @@
 			children = (
 				6E7480071E8D17D4005E3FB0 /* BookingViewController.swift */,
 				6E349A881E8FBEB600DB810A /* CityViewController.swift */,
+				6ED023401E911DC800DB0D7B /* ErrorViewController.swift */,
+				6ED023411E911DC800DB0D7B /* ErrorViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -372,6 +378,7 @@
 			files = (
 				6E7480001E8D166D005E3FB0 /* LaunchScreen.storyboard in Resources */,
 				6E2BCF191E8FFFFA005A7961 /* Weather.storyboard in Resources */,
+				6ED023431E911DC800DB0D7B /* ErrorViewController.xib in Resources */,
 				6E747FFD1E8D166D005E3FB0 /* Assets.xcassets in Resources */,
 				6E1C74FE1E8FD7E900FF9EC6 /* CityTableViewCell.xib in Resources */,
 				6E747FFB1E8D166D005E3FB0 /* Booking.storyboard in Resources */,
@@ -401,6 +408,7 @@
 				6E88D8981E90751300331D1F /* Translations.swift in Sources */,
 				6E1C74FD1E8FD7E900FF9EC6 /* CityTableViewCell.swift in Sources */,
 				6E53F99B1E8DC48B00088E19 /* PassengersList.swift in Sources */,
+				6ED023421E911DC800DB0D7B /* ErrorViewController.swift in Sources */,
 				6E1C75001E8FDBC300FF9EC6 /* MainBookingViewDelegate.swift in Sources */,
 				6E3FD8D11E8ECB8800DC6CFC /* CityView.swift in Sources */,
 				6E2BCF1F1E90310D005A7961 /* TravelTabsView.swift in Sources */,

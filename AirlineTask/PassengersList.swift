@@ -53,6 +53,6 @@ class PassengersList: UIView {
     }
 
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 300, height: 120)
+        return CGSize(width: UIViewNoIntrinsicMetric, height: 120)
     }
 }

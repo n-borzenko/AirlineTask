@@ -10,6 +10,10 @@ import UIKit
 
 class BookingViewController: BaseBlueViewController {
 
+    var errorController = ErrorViewController()
+    var errorWindow: UIWindow!
+    
+    
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var bookingView: MainBookingView!
     let selectCitySegueId = "SelectCity"
@@ -22,10 +26,24 @@ class BookingViewController: BaseBlueViewController {
         
         searchButton.layer.cornerRadius = searchButton.frame.height / 2
         
+        let frame = CGRect(x: view.bounds.minX, y: view.bounds.minY, width: view.bounds.width, height: 55)
+        errorWindow = UIWindow.init(frame: frame)
+        errorWindow.rootViewController = errorController
+        errorWindow.windowLevel = UIWindowLevelStatusBar
+        errorWindow.isHidden = true
+        
     }
     
     @IBAction func searchFlights(_ sender: Any) {
-        performSegue(withIdentifier: showWeatherSegueId, sender: self)
+        showError("Ошибка")
+    }
+    
+    func showError(_ message: String = "") {
+        errorWindow.isHidden = false
+        errorController.show(message) { [unowned self] in
+            self.errorWindow.isHidden = true
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -84,7 +84,7 @@ class ReturnDateComponentView: UIView {
         addSubview(removeButton)
         removeButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
         removeButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        removeButton.leadingAnchor.constraint(equalTo: dateView.trailingAnchor, constant: 10).isActive = true
+        removeButton.leadingAnchor.constraint(equalTo: dateView.trailingAnchor, constant: 5).isActive = true
         removeButton.centerYAnchor.constraint(equalTo: dateView.centerYAnchor).isActive = true
         removeButton.translatesAutoresizingMaskIntoConstraints = false
         
