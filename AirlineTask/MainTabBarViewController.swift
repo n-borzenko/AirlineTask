@@ -33,7 +33,7 @@ class MainTabBarViewController: UITabBarController {
         let registrationController = UIViewController()
         registrationController.tabBarItem.title = "Регистрация"
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Booking", bundle: nil)
         let bookingController = storyboard.instantiateInitialViewController()!
         viewControllers = [tiketsController, registrationController, bookingController]
         

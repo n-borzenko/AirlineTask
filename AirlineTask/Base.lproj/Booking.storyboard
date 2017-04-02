@@ -133,6 +133,7 @@
                         <outlet property="bookingView" destination="ZkK-jl-X98" id="VxZ-Cg-Kod"/>
                         <outlet property="searchButton" destination="lTc-xr-D08" id="g8d-YH-g0n"/>
                         <segue destination="e4Z-KG-28e" kind="presentation" identifier="SelectCity" id="02s-3S-0os"/>
+                        <segue destination="unR-gF-Sar" kind="presentation" identifier="ShowWeather" modalTransitionStyle="crossDissolve" id="4XH-bp-XAW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -272,6 +273,14 @@
                 <exit id="7dn-0o-X86" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3125.5999999999999" y="141.67916041979012"/>
+        </scene>
+        <!--Weather-->
+        <scene sceneID="rge-rG-qq2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Weather" id="unR-gF-Sar" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xqB-3t-bfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2129" y="731"/>
         </scene>
     </scenes>
     <resources>

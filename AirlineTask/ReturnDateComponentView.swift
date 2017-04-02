@@ -41,12 +41,6 @@ class ReturnDateComponentView: UIView {
         let bundle = Bundle(for: ReturnDateComponentView.self)
         let cornerRaduis: CGFloat = 10.0
         
-//        let stackView = UIStackView()
-//        stackView.axis = .horizontal
-//        stackView.alignment = .center
-//        stackView.distribution = .fillProportionally
-//        stackView.spacing = 10
-        
         dateView = TravelDateView(direction: .backward)
         
         addSubview(dateView)
@@ -94,23 +88,7 @@ class ReturnDateComponentView: UIView {
         removeButton.centerYAnchor.constraint(equalTo: dateView.centerYAnchor).isActive = true
         removeButton.translatesAutoresizingMaskIntoConstraints = false
         
-//        stackView.addArrangedSubview(dateView)
-//        stackView.addArrangedSubview(addDateButton)
-//        stackView.addArrangedSubview(removeButton)
-        
         changeState()
-//        addSubview(stackView)
-        
-//        stackView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor).isActive = true
-//        stackView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
-//        stackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
-//        stackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor).isActive = true
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        
-        
-        
         addDateButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
         removeButton.addTarget(self, action: #selector(removeAction), for: .touchUpInside)
     }

@@ -36,11 +36,6 @@ class TravelDateView: UIView {
     }
     
     func createSubviews() {
-//        let stackView = UIStackView()
-//        stackView.axis = .vertical
-//        stackView.alignment = .leading
-//        stackView.distribution = .fillProportionally
-        
         directionLabel = UILabel()
         directionLabel.font = UIFont.systemFont(ofSize: 14.0)
         directionLabel.textColor = UIColor.white.withAlphaComponent(0.5)
@@ -64,16 +59,6 @@ class TravelDateView: UIView {
         dateButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         dateButton.topAnchor.constraint(equalTo: directionLabel.bottomAnchor).isActive = true
         dateButton.translatesAutoresizingMaskIntoConstraints = false
-        
-//        stackView.addArrangedSubview(directionLabel)
-//        stackView.addArrangedSubview(dateButton)
-//        addSubview(stackView)
-//        
-//        stackView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor).isActive = true
-//        stackView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
-//        stackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
-//        stackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor).isActive = true
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     @IBInspectable var travelDirection: String = "" {

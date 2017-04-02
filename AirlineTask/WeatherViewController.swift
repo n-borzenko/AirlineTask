@@ -11,12 +11,18 @@ import UIKit
 class WeatherViewController: UIViewController {
 
     @IBOutlet weak var planeImageView: UIImageView!
+    @IBOutlet weak var departureCityLabel: UILabel!
+    @IBOutlet weak var arrivalCityLabel: UILabel!
     @IBOutlet weak var toolBarView: UIToolbar!
+    
     @IBOutlet weak var travelTabsView: TravelTabsView!
     @IBOutlet weak var contentView: UIView!
     
     let forwardController = WeatherListViewController()
     let backwardController = WeatherListViewController()
+    
+    var fromCity = ""
+    var toCity = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +35,15 @@ class WeatherViewController: UIViewController {
         
         let planeImage = UIImage(named: "GlobalPlane")!.withRenderingMode(.alwaysTemplate)
         planeImageView.image = planeImage
+        departureCityLabel.text = fromCity
+        arrivalCityLabel.text = toCity
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    @IBAction func backToBooking(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     fileprivate func addChild(controller: UIViewController) {

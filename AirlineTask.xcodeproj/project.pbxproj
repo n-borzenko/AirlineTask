@@ -23,7 +23,7 @@
 		6E53F99D1E8E6B8F00088E19 /* TravelDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E53F99C1E8E6B8F00088E19 /* TravelDateView.swift */; };
 		6E53F99F1E8E847A00088E19 /* ReturnDateComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E53F99E1E8E847A00088E19 /* ReturnDateComponentView.swift */; };
 		6E747FF61E8D166D005E3FB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E747FF51E8D166D005E3FB0 /* AppDelegate.swift */; };
-		6E747FFB1E8D166D005E3FB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E747FF91E8D166D005E3FB0 /* Main.storyboard */; };
+		6E747FFB1E8D166D005E3FB0 /* Booking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E747FF91E8D166D005E3FB0 /* Booking.storyboard */; };
 		6E747FFD1E8D166D005E3FB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E747FFC1E8D166D005E3FB0 /* Assets.xcassets */; };
 		6E7480001E8D166D005E3FB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E747FFE1E8D166D005E3FB0 /* LaunchScreen.storyboard */; };
 		6E7480081E8D17D4005E3FB0 /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7480071E8D17D4005E3FB0 /* BookingViewController.swift */; };
@@ -55,7 +55,7 @@
 		6E53F99E1E8E847A00088E19 /* ReturnDateComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturnDateComponentView.swift; sourceTree = "<group>"; };
 		6E747FF21E8D166D005E3FB0 /* AirlineTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirlineTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E747FF51E8D166D005E3FB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6E747FFA1E8D166D005E3FB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6E747FFA1E8D166D005E3FB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Booking.storyboard; sourceTree = "<group>"; };
 		6E747FFC1E8D166D005E3FB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E747FFF1E8D166D005E3FB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E7480011E8D166D005E3FB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = AirlineTask/Info.plist; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				6E74800B1E8D1851005E3FB0 /* Classes */,
-				6E74800A1E8D180C005E3FB0 /* SupportingFiles */,
+				6E74800A1E8D180C005E3FB0 /* Supporting Files */,
 				6E7480091E8D17E9005E3FB0 /* Resources */,
 			);
 			path = AirlineTask;
@@ -116,46 +116,198 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		6E74800A1E8D180C005E3FB0 /* SupportingFiles */ = {
+		6E74800A1E8D180C005E3FB0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				6E7480011E8D166D005E3FB0 /* Info.plist */,
 			);
-			name = SupportingFiles;
+			name = "Supporting Files";
 			path = ..;
 			sourceTree = "<group>";
 		};
 		6E74800B1E8D1851005E3FB0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				6E7480071E8D17D4005E3FB0 /* BookingViewController.swift */,
-				6E747FF91E8D166D005E3FB0 /* Main.storyboard */,
+				6ED0232D1E90FD6E00DB0D7B /* Business Logic */,
+				6ED0232E1E90FD8300DB0D7B /* Models */,
+				6ED0232F1E90FD8A00DB0D7B /* Presentation */,
 				6E747FF51E8D166D005E3FB0 /* AppDelegate.swift */,
-				6E74800E1E8D3ED6005E3FB0 /* MainTabBarViewController.swift */,
-				6E7480101E8D4323005E3FB0 /* Colors.swift */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		6ED0232D1E90FD6E00DB0D7B /* Business Logic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Business Logic";
+			sourceTree = "<group>";
+		};
+		6ED0232E1E90FD8300DB0D7B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		6ED0232F1E90FD8A00DB0D7B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				6ED023321E90FDF400DB0D7B /* Common */,
+				6ED023311E90FDC500DB0D7B /* Weather */,
+				6ED023301E90FDB700DB0D7B /* Booking */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
+		6ED023301E90FDB700DB0D7B /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				6E747FF91E8D166D005E3FB0 /* Booking.storyboard */,
+				6ED0233F1E90FE7200DB0D7B /* ViewModels */,
+				6ED0233C1E90FE5400DB0D7B /* Helpers */,
+				6ED0233A1E90FE4300DB0D7B /* PresentationModels */,
+				6ED023381E90FE3400DB0D7B /* ViewControllers */,
+				6ED023351E90FE1D00DB0D7B /* Views */,
+			);
+			name = Booking;
+			sourceTree = "<group>";
+		};
+		6ED023311E90FDC500DB0D7B /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				6E2BCF181E8FFFFA005A7961 /* Weather.storyboard */,
+				6ED0233E1E90FE6800DB0D7B /* ViewModels */,
+				6ED0233B1E90FE4B00DB0D7B /* Helpers */,
+				6ED023391E90FE3800DB0D7B /* PresentationModels */,
+				6ED023371E90FE2F00DB0D7B /* ViewControllers */,
+				6ED023341E90FE1600DB0D7B /* Views */,
+			);
+			name = Weather;
+			sourceTree = "<group>";
+		};
+		6ED023321E90FDF400DB0D7B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				6ED0233D1E90FE5900DB0D7B /* Helpers */,
+				6ED023361E90FE2300DB0D7B /* ViewControllers */,
+				6ED023331E90FE0F00DB0D7B /* Views */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		6ED023331E90FE0F00DB0D7B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		6ED023341E90FE1600DB0D7B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6E88D89C1E907B2400331D1F /* WeatherTableViewCell.xib */,
+				6E88D89B1E907B2400331D1F /* WeatherTableViewCell.swift */,
+				6E88D89F1E907B9300331D1F /* WeatherHeaderView.swift */,
+				6E2BCF1E1E90310D005A7961 /* TravelTabsView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		6ED023351E90FE1D00DB0D7B /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				6E7480121E8D9F9F005E3FB0 /* PassengerView.swift */,
 				6E53F99A1E8DC48B00088E19 /* PassengersList.swift */,
 				6E53F99C1E8E6B8F00088E19 /* TravelDateView.swift */,
 				6E53F99E1E8E847A00088E19 /* ReturnDateComponentView.swift */,
-				6E3FD8D01E8ECB8800DC6CFC /* CityView.swift */,
 				6E349A861E8EF14700DB810A /* MainBookingView.swift */,
-				6E349A881E8FBEB600DB810A /* CityViewController.swift */,
-				6E1C74F91E8FD66000FF9EC6 /* BaseBlueViewController.swift */,
+				6E3FD8D01E8ECB8800DC6CFC /* CityView.swift */,
 				6E1C74FB1E8FD7E900FF9EC6 /* CityTableViewCell.swift */,
 				6E1C74FC1E8FD7E900FF9EC6 /* CityTableViewCell.xib */,
-				6E1C74FF1E8FDBC300FF9EC6 /* MainBookingViewDelegate.swift */,
-				6E2BCF181E8FFFFA005A7961 /* Weather.storyboard */,
-				6E2BCF1A1E900229005A7961 /* WeatherViewController.swift */,
-				6E2BCF1C1E9030B6005A7961 /* TravelDirection.swift */,
-				6E2BCF1E1E90310D005A7961 /* TravelTabsView.swift */,
-				6E2BCF201E904349005A7961 /* TravelTabsViewDelegate.swift */,
-				6E88D8951E90514E00331D1F /* WeatherListViewController.swift */,
-				6E88D8971E90751300331D1F /* Translations.swift */,
-				6E88D89B1E907B2400331D1F /* WeatherTableViewCell.swift */,
-				6E88D89C1E907B2400331D1F /* WeatherTableViewCell.xib */,
-				6E88D89F1E907B9300331D1F /* WeatherHeaderView.swift */,
 			);
-			name = Classes;
+			name = Views;
+			sourceTree = "<group>";
+		};
+		6ED023361E90FE2300DB0D7B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6E74800E1E8D3ED6005E3FB0 /* MainTabBarViewController.swift */,
+				6E1C74F91E8FD66000FF9EC6 /* BaseBlueViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6ED023371E90FE2F00DB0D7B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6E2BCF1A1E900229005A7961 /* WeatherViewController.swift */,
+				6E88D8951E90514E00331D1F /* WeatherListViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6ED023381E90FE3400DB0D7B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6E7480071E8D17D4005E3FB0 /* BookingViewController.swift */,
+				6E349A881E8FBEB600DB810A /* CityViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6ED023391E90FE3800DB0D7B /* PresentationModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = PresentationModels;
+			sourceTree = "<group>";
+		};
+		6ED0233A1E90FE4300DB0D7B /* PresentationModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = PresentationModels;
+			sourceTree = "<group>";
+		};
+		6ED0233B1E90FE4B00DB0D7B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6E2BCF201E904349005A7961 /* TravelTabsViewDelegate.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		6ED0233C1E90FE5400DB0D7B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6E1C74FF1E8FDBC300FF9EC6 /* MainBookingViewDelegate.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		6ED0233D1E90FE5900DB0D7B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6E7480101E8D4323005E3FB0 /* Colors.swift */,
+				6E2BCF1C1E9030B6005A7961 /* TravelDirection.swift */,
+				6E88D8971E90751300331D1F /* Translations.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		6ED0233E1E90FE6800DB0D7B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		6ED0233F1E90FE7200DB0D7B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,7 +374,7 @@
 				6E2BCF191E8FFFFA005A7961 /* Weather.storyboard in Resources */,
 				6E747FFD1E8D166D005E3FB0 /* Assets.xcassets in Resources */,
 				6E1C74FE1E8FD7E900FF9EC6 /* CityTableViewCell.xib in Resources */,
-				6E747FFB1E8D166D005E3FB0 /* Main.storyboard in Resources */,
+				6E747FFB1E8D166D005E3FB0 /* Booking.storyboard in Resources */,
 				6E88D89E1E907B2400331D1F /* WeatherTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,12 +414,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6E747FF91E8D166D005E3FB0 /* Main.storyboard */ = {
+		6E747FF91E8D166D005E3FB0 /* Booking.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				6E747FFA1E8D166D005E3FB0 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Booking.storyboard;
 			sourceTree = "<group>";
 		};
 		6E747FFE1E8D166D005E3FB0 /* LaunchScreen.storyboard */ = {
