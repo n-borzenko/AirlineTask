@@ -35,7 +35,7 @@ class BookingViewController: BaseBlueViewController {
     }
     
     @IBAction func searchFlights(_ sender: Any) {
-        showError("Ошибка")
+        performSegue(withIdentifier: showWeatherSegueId, sender: self)
     }
     
     func showError(_ message: String = "") {
