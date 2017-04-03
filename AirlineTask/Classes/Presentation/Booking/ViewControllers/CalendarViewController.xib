@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarViewController" customModule="AirlineTask" customModuleProvider="target">
+            <connections>
+                <outlet property="datePicker" destination="pZs-tK-uo8" id="k5C-EB-iCn"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7X-ni-UcK">
+                    <rect key="frame" x="0.0" y="417" width="375" height="44"/>
+                    <items>
+                        <barButtonItem title="Отмена" id="Z6h-qv-qpU">
+                            <color key="tintColor" red="0.1529411765" green="0.33333333329999998" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="cancel:" destination="-1" id="WsT-sR-89i"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="h8X-JV-UhD"/>
+                        <barButtonItem title="Готово" id="eDx-rR-dLg">
+                            <color key="tintColor" red="0.1529411765" green="0.33333333329999998" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="selectDate:" destination="-1" id="PfV-eu-EBM"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                    <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </toolbar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mFE-D4-tff">
+                    <rect key="frame" x="0.0" y="461" width="375" height="206"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="pZs-tK-uo8">
+                    <rect key="frame" x="0.0" y="461" width="375" height="206"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="206" id="4aQ-9V-gCn"/>
+                    </constraints>
+                    <date key="date" timeIntervalSinceReferenceDate="512879788.08440697">
+                        <!--2017-04-03 02:36:28 +0000-->
+                    </date>
+                </datePicker>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="mFE-D4-tff" firstAttribute="top" secondItem="pZs-tK-uo8" secondAttribute="top" id="2PM-Ui-lBu"/>
+                <constraint firstItem="pZs-tK-uo8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2R9-qm-Hcb"/>
+                <constraint firstItem="S7X-ni-UcK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4TO-76-2Ew"/>
+                <constraint firstItem="mFE-D4-tff" firstAttribute="bottom" secondItem="pZs-tK-uo8" secondAttribute="bottom" id="9GM-II-W36"/>
+                <constraint firstAttribute="bottom" secondItem="pZs-tK-uo8" secondAttribute="bottom" id="9tB-JX-UwC"/>
+                <constraint firstItem="mFE-D4-tff" firstAttribute="trailing" secondItem="pZs-tK-uo8" secondAttribute="trailing" id="Iyr-U7-QhQ"/>
+                <constraint firstItem="mFE-D4-tff" firstAttribute="leading" secondItem="pZs-tK-uo8" secondAttribute="leading" id="MW1-vp-Nn0"/>
+                <constraint firstAttribute="trailing" secondItem="pZs-tK-uo8" secondAttribute="trailing" id="Scr-OB-oIx"/>
+                <constraint firstAttribute="trailing" secondItem="S7X-ni-UcK" secondAttribute="trailing" id="aJD-7j-2pR"/>
+                <constraint firstItem="pZs-tK-uo8" firstAttribute="top" secondItem="S7X-ni-UcK" secondAttribute="bottom" id="cWB-vP-Xhd"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <point key="canvasLocation" x="33.5" y="-104.5"/>
+        </view>
+    </objects>
+</document>
