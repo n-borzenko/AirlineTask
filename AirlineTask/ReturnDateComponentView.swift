@@ -15,6 +15,8 @@ class ReturnDateComponentView: UIView {
     var addDateButton: UIButton!
     var removeButton: UIButton!
     
+    weak var delegate: DateComponentDelegate?
+    
     @IBInspectable var isSelected: Bool = false {
         didSet {
             changeState()
@@ -42,6 +44,7 @@ class ReturnDateComponentView: UIView {
         let cornerRaduis: CGFloat = 10.0
         
         dateView = TravelDateView(direction: .backward)
+        dateView.delegate = self
         
         addSubview(dateView)
         dateView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
@@ -93,17 +96,33 @@ class ReturnDateComponentView: UIView {
         removeButton.addTarget(self, action: #selector(removeAction), for: .touchUpInside)
     }
     
+    func update(date: Date?) {
+        if let date = date {
+            isSelected = true
+            dateView.update(date: date)
+        } else {
+            isSelected = false
+        }
+    }
+    
     func addAction() {
-        isSelected = true
+        delegate?.beginSelecting(dateView)
     }
     
     func removeAction() {
         isSelected = false
+        delegate?.clear(self)
     }
     
     private func changeState() {
         dateView.isHidden = !isSelected
         addDateButton.isHidden = isSelected
         removeButton.isHidden = !isSelected
+    }
+}
+
+extension ReturnDateComponentView: TravelDateViewDelegate {
+    func beginSelecting(_ travelDateView: TravelDateView) {
+        delegate?.beginSelecting(travelDateView)
     }
 }

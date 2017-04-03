@@ -11,11 +11,20 @@ import UIKit
 @IBDesignable
 class TravelDateView: UIView {
 
+    @IBInspectable var travelDirection: String = "" {
+        didSet {
+            direction = TravelDirection(rawValue: travelDirection) ?? .forward
+        }
+    }
+    
     var direction: TravelDirection = .forward {
         didSet {
             directionLabel.text = direction.description
         }
     }
+    
+    weak var delegate: TravelDateViewDelegate?
+
     var directionLabel: UILabel!
     var dateButton: UIButton!
     
@@ -47,24 +56,24 @@ class TravelDateView: UIView {
         directionLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         directionLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d MMMM, EEEEEE"
-        let dateString = formatter.string(from: Date())
-        let title = NSAttributedString(string: dateString, attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 15.0), NSForegroundColorAttributeName: UIColor.white])
-        
         dateButton = UIButton()
-        dateButton.setAttributedTitle(title, for: .normal)
-        
         addSubview(dateButton)
         dateButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         dateButton.topAnchor.constraint(equalTo: directionLabel.bottomAnchor).isActive = true
         dateButton.translatesAutoresizingMaskIntoConstraints = false
+        dateButton.addTarget(self, action: #selector(startSelecting), for: .touchUpInside)
     }
     
-    @IBInspectable var travelDirection: String = "" {
-        didSet {
-            direction = TravelDirection(rawValue: travelDirection) ?? .forward
-        }
+    func startSelecting() {
+        delegate?.beginSelecting(self)
+    }
+    
+    func update(date: Date) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMMM, EEEEEE"
+        let dateString = formatter.string(from: date)
+        let title = NSAttributedString(string: dateString, attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 15.0), NSForegroundColorAttributeName: UIColor.white])
+        dateButton.setAttributedTitle(title, for: .normal)
     }
     
     override var intrinsicContentSize: CGSize {

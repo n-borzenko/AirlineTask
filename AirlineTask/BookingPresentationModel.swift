@@ -12,6 +12,8 @@ class BookingPresentationModel {
     weak var delegate: BookingPresentationDelegate?
     
     var viewModel = BookingViewModel()
+    var calendarDirection: TravelDirection?
+    
     let maximumPassengersCount = 9
     
     init() {
@@ -30,7 +32,20 @@ class BookingPresentationModel {
             return false
         }
         
+        guard valideteDates(forward: viewModel.forwardDate, backward: viewModel.backwardDate) else {
+            return false
+        }
+        
         return validatePassengers(adults: viewModel.passengers, kids: viewModel.kids, babies: viewModel.babies)
+    }
+    
+    func validate(_ date: Date, for direction: TravelDirection) -> Bool {
+        switch direction {
+        case .forward:
+            return valideteDates(forward: date, backward: viewModel.backwardDate)
+        case .backward:
+            return valideteDates(forward: viewModel.forwardDate, backward: date)
+        }
     }
     
     func swapCities() {
@@ -69,6 +84,38 @@ class BookingPresentationModel {
                 delegate?.updatePassengers()
             }
         }
+    }
+    
+    private func valideteDates(forward: Date, backward: Date?) -> Bool {
+        let calendar = Calendar.current
+        let limitDate = calendar.date(byAdding: .year, value: 1, to: Date())!
+        let today = calendar.startOfDay(for: Date())
+        let forwardDate = calendar.startOfDay(for: forward)
+        
+        guard forwardDate.timeIntervalSince1970 <= limitDate.timeIntervalSince1970 else {
+            delegate?.showError(message: "Дата Туда должна быть в пределах одного года от текущей")
+            return false
+        }
+        
+        guard forwardDate.timeIntervalSince1970 >= today.timeIntervalSince1970 else {
+            delegate?.showError(message: "Дата Туда должна быть не раньше сегодняшней даты")
+            return false
+        }
+        
+        if let backward = backward {
+            let backwardDate = calendar.startOfDay(for: backward)
+            
+            guard backwardDate.timeIntervalSince1970 <= limitDate.timeIntervalSince1970 else {
+                delegate?.showError(message: "Дата Обратно должна быть в пределах одного года от текущей")
+                return false
+            }
+            
+            guard forwardDate.timeIntervalSince1970 <= backwardDate.timeIntervalSince1970 else {
+                delegate?.showError(message: "Дата Обратно должна быть не раньше даты Туда")
+                return false
+            }
+        }
+        return true
     }
     
     private func validatePassengers(adults: Int, kids: Int, babies: Int) -> Bool {

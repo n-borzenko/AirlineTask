@@ -21,6 +21,10 @@ class BookingViewController: BaseBlueViewController {
     @IBOutlet weak var backwardDateView: ReturnDateComponentView!
     @IBOutlet weak var passengerView: PassengersList!
     
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var calendarView: UIView!
+    var isTransformed = false
+    
     let selectDepartureCitySegueId = "SelectDepartureCity"
     let selectArrivalCitySegueId = "SelectArrivalCity"
     let showWeatherSegueId = "ShowWeather"
@@ -31,6 +35,8 @@ class BookingViewController: BaseBlueViewController {
         presentationModel.delegate = self
         bookingView.delegate = self
         passengerView.delegate = self
+        forwardDateView.delegate = self
+        backwardDateView.delegate = self
         searchButton.layer.cornerRadius = searchButton.frame.height / 2
         
         let frame = CGRect(x: view.bounds.minX, y: view.bounds.minY, width: view.bounds.width, height: 55)
@@ -41,6 +47,35 @@ class BookingViewController: BaseBlueViewController {
         
         bookingView.update(with: presentationModel.viewModel)
         passengerView.update(with: presentationModel.viewModel)
+        forwardDateView.update(date: presentationModel.viewModel.forwardDate)
+        backwardDateView.update(date: presentationModel.viewModel.backwardDate)
+        calendarView.isHidden = true
+        view.bringSubview(toFront: calendarView)
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(closeCalendar(_:)))
+        calendarView.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @IBAction func closeCalendar(_ sender: Any) {
+        presentationModel.calendarDirection = nil
+        calendarView.isHidden = true
+        tabBarController?.tabBar.isHidden = false
+    }
+    
+    @IBAction func selectDate(_ sender: Any) {
+        guard let direction = presentationModel.calendarDirection,
+            presentationModel.validate(datePicker.date, for: direction) else {
+                return
+        }
+        
+        switch direction {
+        case .forward:
+            presentationModel.viewModel.forwardDate = datePicker.date
+            forwardDateView.update(date: presentationModel.viewModel.forwardDate)
+        case .backward:
+            presentationModel.viewModel.backwardDate = datePicker.date
+            backwardDateView.update(date: presentationModel.viewModel.backwardDate)
+        }
+        closeCalendar(self)
     }
     
     @IBAction func searchFlights(_ sender: Any) {
@@ -109,6 +144,32 @@ extension BookingViewController: MainBookingViewDelegate {
     func swapCities() {
         presentationModel.swapCities()
         bookingView.update(with: presentationModel.viewModel)
+    }
+}
+
+extension BookingViewController: DateComponentDelegate {
+    func beginSelecting(_ travelDateView: TravelDateView) {
+        switch travelDateView.direction {
+        case .forward:
+            datePicker.date = presentationModel.viewModel.forwardDate
+        case .backward:
+            if let date =  presentationModel.viewModel.backwardDate {
+                datePicker.date = date
+            } else {
+                datePicker.date = presentationModel.viewModel.forwardDate
+            }
+        }
+        presentationModel.calendarDirection = travelDateView.direction
+        tabBarController?.tabBar.isHidden = true
+        calendarView.isHidden = false
+        if !isTransformed {
+            calendarView.transform = CGAffineTransform(translationX: 0, y: 50)
+            isTransformed = true
+        }
+    }
+    
+    func clear(_ returnDateView: ReturnDateComponentView) {
+        presentationModel.viewModel.backwardDate = nil
     }
 }
 
