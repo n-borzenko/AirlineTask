@@ -29,8 +29,8 @@ class WeatherPresentationModel {
             switch result {
             case .success(let value):
                 self.fetchedWeather(items: value)
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                //print(error)
                 return
             }
         }

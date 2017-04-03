@@ -12,7 +12,7 @@ class BookingViewModel {
     
     var passengers = 1
     var kids = 0
-    var babies = 2
+    var babies = 0
     
     var forwardDate = Date()
     var backwardDate: Date?

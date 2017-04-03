@@ -13,11 +13,16 @@ class PassengerView: UIView {
     
     weak var delegate: PassengerViewDelegate?
     
-    var addButton = UIButton()
-    var removeButton = UIButton()
+    var addButton = UIImageView()
+    var removeButton = UIImageView()
     var countLabel = UILabel()
     var passengerImageView = UIImageView()
     var titleLabel = UILabel()
+    
+    var addView = UIView()
+    var removeView = UIView()
+    private var addRecognizer: UITapGestureRecognizer!
+    private var removeRecognizer: UITapGestureRecognizer!
     
     var passengerType = PassengerType.adult
     var needAnimation = false
@@ -59,7 +64,7 @@ class PassengerView: UIView {
         createSubviews()
     }
     
-    var isEnabled = true {
+    var isEnabled = false {
         didSet {
             if isEnabled {
                 addButton.tintColor = UIColor.white
@@ -87,9 +92,10 @@ class PassengerView: UIView {
         mainStackView.spacing = 16.0
         
         let plusImage = UIImage(named: "BookingPlus", in: bundle, compatibleWith: traitCollection)
-        addButton.setBackgroundImage(plusImage, for: .normal)
-        addButton.tintColor = UIColor.white
-        addSubview(addButton)
+        addButton.image = plusImage
+        addButton.contentMode = .scaleAspectFit
+        addView.addSubview(addButton)
+        addSubview(addView)
 
         let countStackView = UIStackView()
         countStackView.axis = .horizontal
@@ -99,11 +105,9 @@ class PassengerView: UIView {
         count = passengerType.defaultValue
         countLabel.text = "\(count)"
         countLabel.font = UIFont.systemFont(ofSize: 26.0)
-        countLabel.textColor = UIColor.white
         let passengerIcon = UIImage(named: passengerType.imageName, in: bundle, compatibleWith: traitCollection)
         passengerImageView.image = passengerIcon
         passengerImageView.contentMode = .bottom
-        passengerImageView.tintColor = UIColor.white
         countStackView.addArrangedSubview(countLabel)
         countStackView.addArrangedSubview(passengerImageView)
         
@@ -113,16 +117,18 @@ class PassengerView: UIView {
         descriptionStackView.distribution = .fillProportionally
         titleLabel.text = passengerType.description
         titleLabel.font = UIFont.systemFont(ofSize: 14.0)
-        titleLabel.textColor = UIColor.white
         descriptionStackView.addArrangedSubview(countStackView)
         descriptionStackView.addArrangedSubview(titleLabel)
         
         let minusImage = UIImage(named: "BookingMinus", in: bundle, compatibleWith: traitCollection)
-        removeButton.setBackgroundImage(minusImage, for: .normal)
-        removeButton.tintColor = UIColor.white
-        mainStackView.addArrangedSubview(addButton)
+        removeButton.image = minusImage
+        removeButton.contentMode = .scaleAspectFit
+        removeView.addSubview(removeButton)
+        addSubview(removeView)
+        
+        mainStackView.addArrangedSubview(addView)
         mainStackView.addArrangedSubview(descriptionStackView)
-        mainStackView.addArrangedSubview(removeButton)
+        mainStackView.addArrangedSubview(removeView)
         
         addSubview(mainStackView)
 
@@ -134,18 +140,34 @@ class PassengerView: UIView {
         
         addButton.heightAnchor.constraint(equalToConstant: 12).isActive = true
         addButton.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        addButton.addTarget(self, action: #selector(addPassenger), for: .touchUpInside)
+        addButton.leadingAnchor.constraint(equalTo: addView.leadingAnchor).isActive = true
+        addButton.centerYAnchor.constraint(equalTo: addView.centerYAnchor).isActive = true
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        addView.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        addView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        addView.translatesAutoresizingMaskIntoConstraints = false
+        addRecognizer = UITapGestureRecognizer(target: self, action: #selector(addPassenger(_:)))
+        addView.addGestureRecognizer(addRecognizer)
         
         removeButton.heightAnchor.constraint(equalToConstant: 12).isActive = true
         removeButton.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        removeButton.addTarget(self, action: #selector(removePassenger), for: .touchUpInside)
+        removeButton.leadingAnchor.constraint(equalTo: removeView.leadingAnchor).isActive = true
+        removeButton.centerYAnchor.constraint(equalTo: removeView.centerYAnchor).isActive = true
+        removeButton.translatesAutoresizingMaskIntoConstraints = false
+        removeView.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        removeView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        removeView.translatesAutoresizingMaskIntoConstraints = false
+        removeRecognizer = UITapGestureRecognizer(target: self, action: #selector(removePassenger(_:)))
+        removeView.addGestureRecognizer(removeRecognizer)
+        
+        isEnabled = count != 0
     }
     
-    func addPassenger() {
+    func addPassenger(_ sender: UITapGestureRecognizer) {
         delegate?.tryUpdate(self, to: count + 1)
     }
     
-    func removePassenger() {
+    func removePassenger(_ sender: UITapGestureRecognizer) {
         if count > 0 {
             delegate?.tryUpdate(self, to: count - 1)
         }

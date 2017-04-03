@@ -24,8 +24,8 @@ class CitiesPresentationModel {
             switch result {
             case .success(let value):
                 self.fetchedCities(items: value)
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                //print(error)
                 return
             }
         }

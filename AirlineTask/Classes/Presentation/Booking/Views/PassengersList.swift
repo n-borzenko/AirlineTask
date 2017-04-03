@@ -54,9 +54,15 @@ class PassengersList: UIView {
     }
     
     func update(with viewModel: BookingViewModel) {
-        adultsCounter.count = viewModel.passengers
-        kidsCounter.count = viewModel.kids
-        babiesCounter.count = viewModel.babies
+        if adultsCounter.count != viewModel.passengers {
+            adultsCounter.count = viewModel.passengers
+        }
+        if kidsCounter.count != viewModel.kids {
+            kidsCounter.count = viewModel.kids
+        }
+        if babiesCounter.count != viewModel.babies {
+             babiesCounter.count = viewModel.babies
+        }
     }
 
     override var intrinsicContentSize: CGSize {

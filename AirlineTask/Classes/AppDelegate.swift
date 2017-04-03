@@ -17,20 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
 
         window?.rootViewController = MainTabBarViewController()
-        
-//        ServicesProvider.instance.cities.getCities { result in
-//            switch result {
-//            case .success(let cities):
-//                for city in cities {
-//                    print(city)
-//                }
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-
-        
-        
         window?.makeKeyAndVisible()
         return true
     }
