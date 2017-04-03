@@ -8,52 +8,38 @@
 
 import UIKit
 
-enum PassengerType {
-    case adult
-    case kid
-    case baby
-}
-
-extension PassengerType {
-    var defaultValue: Int {
-        switch self {
-        case .adult: return 1
-        case .kid: return 0
-        case .baby: return 0
-        }
-    }
-    
-    var imageName: String {
-        switch self {
-        case .adult: return "BookingPerson"
-        case .kid: return "BookingKid"
-        case .baby: return "BookingBaby"
-        }
-    }
-    
-    var description: String {
-        switch self {
-        case .adult: return "Взрослый"
-        case .kid: return "2-12 лет"
-        case .baby: return "до 2-х лет"
-        }
-    }
-}
-
 @IBDesignable
 class PassengerView: UIView {
     
-    var addButton: UIButton!
-    var removeButton: UIButton!
-    var countLabel: UILabel!
+    weak var delegate: PassengerViewDelegate?
+    
+    var addButton = UIButton()
+    var removeButton = UIButton()
+    var countLabel = UILabel()
+    var passengerImageView = UIImageView()
+    var titleLabel = UILabel()
     
     var passengerType = PassengerType.adult
+    var needAnimation = false
     var count = 0 {
+        willSet {
+            if newValue == count {
+                needAnimation = false
+            }
+        }
         didSet {
-            animateChanges()
+            if count == 0 && isEnabled == true {
+                isEnabled = false
+            } else if count > 0 && isEnabled == false {
+                isEnabled = true
+            }
+            
+            if needAnimation {
+                animateChanges()
+            }
+            needAnimation = true
         }
     }
-
     
     init(type: PassengerType) {
         passengerType = type
@@ -72,6 +58,24 @@ class PassengerView: UIView {
         super.init(coder: aDecoder)
         createSubviews()
     }
+    
+    var isEnabled = true {
+        didSet {
+            if isEnabled {
+                addButton.tintColor = UIColor.white
+                passengerImageView.tintColor = UIColor.white
+                removeButton.tintColor = UIColor.white
+                titleLabel.textColor = UIColor.white
+                countLabel.textColor = UIColor.white
+            } else {
+                addButton.tintColor = UIColor.white.withAlphaComponent(0.5)
+                passengerImageView.tintColor = UIColor.white.withAlphaComponent(0.5)
+                removeButton.tintColor = UIColor.white.withAlphaComponent(0.5)
+                titleLabel.textColor = UIColor.white.withAlphaComponent(0.5)
+                countLabel.textColor = UIColor.white.withAlphaComponent(0.5)
+            }
+        }
+    }
 
     func createSubviews() {
         let bundle = Bundle(for: PassengerView.self)
@@ -82,7 +86,6 @@ class PassengerView: UIView {
         mainStackView.distribution = .equalCentering
         mainStackView.spacing = 16.0
         
-        addButton = UIButton()
         let plusImage = UIImage(named: "BookingPlus", in: bundle, compatibleWith: traitCollection)
         addButton.setBackgroundImage(plusImage, for: .normal)
         addButton.tintColor = UIColor.white
@@ -93,13 +96,12 @@ class PassengerView: UIView {
         countStackView.alignment = .lastBaseline
         countStackView.distribution = .fillProportionally
         countStackView.spacing = 8.0
-        countLabel = UILabel()
         count = passengerType.defaultValue
         countLabel.text = "\(count)"
         countLabel.font = UIFont.systemFont(ofSize: 26.0)
         countLabel.textColor = UIColor.white
         let passengerIcon = UIImage(named: passengerType.imageName, in: bundle, compatibleWith: traitCollection)
-        let passengerImageView = UIImageView(image: passengerIcon)
+        passengerImageView.image = passengerIcon
         passengerImageView.contentMode = .bottom
         passengerImageView.tintColor = UIColor.white
         countStackView.addArrangedSubview(countLabel)
@@ -109,14 +111,12 @@ class PassengerView: UIView {
         descriptionStackView.axis = .vertical
         descriptionStackView.alignment = .leading
         descriptionStackView.distribution = .fillProportionally
-        let titleLabel = UILabel()
         titleLabel.text = passengerType.description
         titleLabel.font = UIFont.systemFont(ofSize: 14.0)
         titleLabel.textColor = UIColor.white
         descriptionStackView.addArrangedSubview(countStackView)
         descriptionStackView.addArrangedSubview(titleLabel)
         
-        removeButton = UIButton()
         let minusImage = UIImage(named: "BookingMinus", in: bundle, compatibleWith: traitCollection)
         removeButton.setBackgroundImage(minusImage, for: .normal)
         removeButton.tintColor = UIColor.white
@@ -142,21 +142,19 @@ class PassengerView: UIView {
     }
     
     func addPassenger() {
-        if count < 9 {
-          count += 1
-        }
+        delegate?.tryUpdate(self, to: count + 1)
     }
     
     func removePassenger() {
         if count > 0 {
-            count -= 1
+            delegate?.tryUpdate(self, to: count - 1)
         }
     }
     
     func animateChanges() {
         countLabel.text = "\(count)"
         
-        let totalDuration = 2.0
+        let totalDuration = 1.0
         let totalCount = 3
         let duration = Double(totalDuration) / Double(totalCount)
         
@@ -165,7 +163,7 @@ class PassengerView: UIView {
             delay: 0.0,
             options: [],
             animations: { [unowned self] in
-            
+                
                 UIView.addKeyframe(withRelativeStartTime: 0 * duration, relativeDuration: duration, animations: { [unowned self] in
                     self.countLabel.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
                 })
@@ -175,52 +173,9 @@ class PassengerView: UIView {
                 UIView.addKeyframe(withRelativeStartTime: 2 * duration, relativeDuration: duration, animations: { [unowned self] in
                     self.countLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                 })
-            
+                
             }, completion: nil)
-        
-//
-//        UIView.animateKeyframes(withDuration: totalDuration, delay: 0.0, options: [],
-//                                animations: { [unowned self] in
-//
-//            var t = 0.0
-//            let dt = 1.0 / Double(totalCount - 1)
-//            
-//            var previousWidth = self.countLabel.frame.width
-//            var previousHeight = self.countLabel.frame.height
-//            
-//            for i in 0..<totalCount {
-//                
-//                let delta = CGFloat(self.animationFunction(p: t))
-//                print(delta)
-//                
-//                let newWidth = previousWidth + delta
-//                let newHeight = previousHeight + delta
-//                
-//                UIView.addKeyframe(withRelativeStartTime: Double(i) * duration, relativeDuration: duration, animations: { [unowned self] in
-//                    self.countLabel.transform = CGAffineTransform(scaleX: newWidth / previousWidth, y: newHeight / previousHeight)
-//                })
-//                t += dt
-//                previousWidth = newWidth
-//                previousHeight = newHeight
-//            }
-//            
-//            
-//        }, completion: nil)
-        
-
-//            CGFloat w = fromSize.width + function(t) * (toSize.width - fromSize.width);
-//            CGFloat h = fromSize.height + function(t) * (toSize.height - fromSize.height);
-
-        
-        
     }
-    
-    
-    
-    func animationFunction(p: Double) -> Double {
-        return sin(13 * M_PI_2 * p) * pow(2, 10 * (p - 1));
-    }
-    
     
     override var intrinsicContentSize: CGSize {
         return CGSize(width: 80, height: 120)

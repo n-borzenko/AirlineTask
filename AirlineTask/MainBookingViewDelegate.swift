@@ -11,4 +11,5 @@ import Foundation
 protocol MainBookingViewDelegate: class {
     func selectDepartureCity()
     func selectArrivalCity()
+    func swapCities()
 }

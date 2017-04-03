@@ -17,6 +17,8 @@ class MainBookingView: UIView {
     
     weak var delegate: MainBookingViewDelegate?
     
+    let selectText = "Выберите направление"
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         createSubviews()
@@ -29,7 +31,7 @@ class MainBookingView: UIView {
     
     func createSubviews() {
         let bundle = Bundle(for: MainBookingView.self)
-
+        
         let departureImage = UIImage(named: "GlobalDepartureCity", in: bundle, compatibleWith: traitCollection)!
         let departureImageView = UIImageView(image: departureImage)
         departureImageView.contentMode = .scaleAspectFit
@@ -42,6 +44,8 @@ class MainBookingView: UIView {
         departureImageView.translatesAutoresizingMaskIntoConstraints = false
         
         departureCity = CityView()
+        departureCity.cityLabel.text = CityTypes.departure.placeholder
+        departureCity.airportsLabel.text = selectText
         addSubview(departureCity)
         departureCity.leadingAnchor.constraint(equalTo: departureImageView.trailingAnchor, constant: 10).isActive = true
         departureCity.topAnchor.constraint(equalTo: topAnchor).isActive = true
@@ -87,6 +91,8 @@ class MainBookingView: UIView {
         lineView.trailingAnchor.constraint(equalTo: swapCitiesButton.centerXAnchor).isActive = true
         
         arrivalCity = CityView()
+        arrivalCity.cityLabel.text = CityTypes.arrival.placeholder
+        arrivalCity.airportsLabel.text = selectText
         addSubview(arrivalCity)
         arrivalCity.topAnchor.constraint(equalTo: swapCitiesButton.bottomAnchor).isActive = true
         arrivalCity.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
@@ -123,9 +129,6 @@ class MainBookingView: UIView {
         departureCity.addGestureRecognizer(departureRecognizer)
         let arrivalRecognizer = UITapGestureRecognizer(target: self, action: #selector(selectArrivalCity(sender:)))
         arrivalCity.addGestureRecognizer(arrivalRecognizer)
-        
-        arrivalCity.cityLabel.text = "Москва"
-        departureCity.cityLabel.text = "Калининград"
     }
     
     @objc private func selectArrivalCity(sender: UITapGestureRecognizer) {
@@ -137,9 +140,25 @@ class MainBookingView: UIView {
     }
     
     @objc private func swapCities() {
-        let tempCity = arrivalCity.cityLabel.text
-        arrivalCity.cityLabel.text = departureCity.cityLabel.text
-        departureCity.cityLabel.text = tempCity
+        delegate?.swapCities()
+    }
+    
+    func update(with viewModel: BookingViewModel) {
+        if let city = viewModel.departureCity {
+            departureCity.cityLabel.text = city.name
+            departureCity.airportsLabel.text = city.airports
+        } else {
+            departureCity.cityLabel.text = CityTypes.departure.placeholder
+            departureCity.airportsLabel.text = selectText
+        }
+        
+        if let city = viewModel.arrivalCity {
+            arrivalCity.cityLabel.text = city.name
+            arrivalCity.airportsLabel.text = city.airports
+        } else {
+            arrivalCity.cityLabel.text = CityTypes.arrival.placeholder
+            arrivalCity.airportsLabel.text = selectText
+        }
     }
     
     override var intrinsicContentSize: CGSize {

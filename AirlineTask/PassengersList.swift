@@ -11,9 +11,7 @@ import UIKit
 @IBDesignable
 class PassengersList: UIView {
     
-    var totalCount = 0
-    var maximumCount = 9
-    var maximumBabiesForAdult = 1
+    weak var delegate: PassengersListDelegate?
     
     var adultsCounter: PassengerView!
     var kidsCounter: PassengerView!
@@ -36,8 +34,11 @@ class PassengersList: UIView {
         mainStackView.distribution = .equalSpacing
         
         adultsCounter = PassengerView(type: .adult)
+        adultsCounter.delegate = self
         kidsCounter = PassengerView(type: .kid)
+        kidsCounter.delegate = self
         babiesCounter = PassengerView(type: .baby)
+        babiesCounter.delegate = self
         
         mainStackView.addArrangedSubview(adultsCounter)
         mainStackView.addArrangedSubview(kidsCounter)
@@ -51,8 +52,20 @@ class PassengersList: UIView {
         mainStackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor).isActive = true
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
     }
+    
+    func update(with viewModel: BookingViewModel) {
+        adultsCounter.count = viewModel.passengers
+        kidsCounter.count = viewModel.kids
+        babiesCounter.count = viewModel.babies
+    }
 
     override var intrinsicContentSize: CGSize {
         return CGSize(width: UIViewNoIntrinsicMetric, height: 120)
+    }
+}
+
+extension PassengersList: PassengerViewDelegate {
+    func tryUpdate(_ passengerView: PassengerView, to value: Int) {
+        delegate?.tryChange(to: value, for: passengerView.passengerType)
     }
 }

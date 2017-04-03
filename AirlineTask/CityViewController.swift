@@ -30,6 +30,11 @@ class CityViewController: BaseBlueViewController {
         let image = UIImage(named: presentationModel.cityType.imageName)!
         cityImageView.image = image.withRenderingMode(.alwaysTemplate)
         cityTextField.placeholder = presentationModel.cityType.placeholder
+        
+        if let city = presentationModel.selectedCity {
+            airportsLabel.text = city.airports
+            cityTextField.text = city.name
+        }
 
         presentationModel.delegate = self
         presentationModel.updateData()

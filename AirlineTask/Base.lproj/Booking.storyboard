@@ -60,9 +60,6 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Bd-tj-ear" customClass="ReturnDateComponentView" customModule="AirlineTask" customModuleProvider="target">
                                                 <rect key="frame" x="197" y="166" width="153" height="50"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qx6-6G-6yc">
                                                 <rect key="frame" x="0.0" y="231" width="375" height="1"/>
@@ -134,10 +131,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backwardDateView" destination="2Bd-tj-ear" id="j83-5Q-JGI"/>
                         <outlet property="bookingView" destination="ZkK-jl-X98" id="VxZ-Cg-Kod"/>
+                        <outlet property="forwardDateView" destination="65Q-of-DpM" id="hGz-av-aAL"/>
+                        <outlet property="passengerView" destination="TJf-m6-U0U" id="WlF-6k-Obk"/>
                         <outlet property="searchButton" destination="lTc-xr-D08" id="g8d-YH-g0n"/>
-                        <segue destination="e4Z-KG-28e" kind="presentation" identifier="SelectCity" id="02s-3S-0os"/>
+                        <segue destination="e4Z-KG-28e" kind="presentation" identifier="SelectDepartureCity" id="02s-3S-0os"/>
                         <segue destination="unR-gF-Sar" kind="presentation" identifier="ShowWeather" modalTransitionStyle="crossDissolve" id="4XH-bp-XAW"/>
+                        <segue destination="e4Z-KG-28e" kind="presentation" identifier="SelectArrivalCity" id="3fu-xO-a4E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -291,4 +292,7 @@
     <resources>
         <image name="GlobalDelete" width="18" height="18"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="02s-3S-0os"/>
+    </inferredMetricsTieBreakers>
 </document>
