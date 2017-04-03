@@ -10,12 +10,8 @@ import Foundation
 
 class BookingViewModel {
     
-//    var passengers = 1
-//    var kids = 0
-//    var babies = 0
-    
-    var passengers = 3
-    var kids = 1
+    var passengers = 1
+    var kids = 0
     var babies = 2
     
     var forwardDate = Date()

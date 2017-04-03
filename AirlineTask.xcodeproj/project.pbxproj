@@ -42,6 +42,7 @@
 		6E65E4B71E91D239004AD595 /* DateComponentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65E4B61E91D239004AD595 /* DateComponentDelegate.swift */; };
 		6E65E4BA1E91EC2A004AD595 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65E4B81E91EC2A004AD595 /* CalendarViewController.swift */; };
 		6E65E4BB1E91EC2A004AD595 /* CalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E65E4B91E91EC2A004AD595 /* CalendarViewController.xib */; };
+		6E65E4BD1E91F058004AD595 /* CalendarControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65E4BC1E91F058004AD595 /* CalendarControllerDelegate.swift */; };
 		6E747FF61E8D166D005E3FB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E747FF51E8D166D005E3FB0 /* AppDelegate.swift */; };
 		6E747FFB1E8D166D005E3FB0 /* Booking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E747FF91E8D166D005E3FB0 /* Booking.storyboard */; };
 		6E747FFD1E8D166D005E3FB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E747FFC1E8D166D005E3FB0 /* Assets.xcassets */; };
@@ -111,6 +112,7 @@
 		6E65E4B61E91D239004AD595 /* DateComponentDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateComponentDelegate.swift; sourceTree = "<group>"; };
 		6E65E4B81E91EC2A004AD595 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		6E65E4B91E91EC2A004AD595 /* CalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarViewController.xib; sourceTree = "<group>"; };
+		6E65E4BC1E91F058004AD595 /* CalendarControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarControllerDelegate.swift; sourceTree = "<group>"; };
 		6E747FF21E8D166D005E3FB0 /* AirlineTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirlineTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E747FF51E8D166D005E3FB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E747FFA1E8D166D005E3FB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Booking.storyboard; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				6E65E4B21E91C14B004AD595 /* PassengerViewDelegate.swift */,
 				6E65E4B41E91D21F004AD595 /* TravelDateViewDelegate.swift */,
 				6E65E4B61E91D239004AD595 /* DateComponentDelegate.swift */,
+				6E65E4BC1E91F058004AD595 /* CalendarControllerDelegate.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				6ECB3C8A1E918A2F00121382 /* HeaderViewModel.swift in Sources */,
 				6E349A871E8EF14700DB810A /* MainBookingView.swift in Sources */,
 				6E88D8A01E907B9300331D1F /* WeatherHeaderView.swift in Sources */,
+				6E65E4BD1E91F058004AD595 /* CalendarControllerDelegate.swift in Sources */,
 				6E2BCF1D1E9030B6005A7961 /* TravelDirection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

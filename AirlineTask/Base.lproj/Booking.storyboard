@@ -34,49 +34,6 @@
                                     <action selector="searchFlights:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HLb-iL-Om0"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NIb-Zp-nwv">
-                                <rect key="frame" x="0.0" y="309" width="375" height="250"/>
-                                <subviews>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7N9-BY-9bd">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                        <items>
-                                            <barButtonItem title="Отмена" id="s5p-K1-iA6">
-                                                <color key="tintColor" red="0.1529411765" green="0.33333333329999998" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <connections>
-                                                    <action selector="closeCalendar:" destination="BYZ-38-t0r" id="jNN-bu-rdD"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="IpV-BY-wb9"/>
-                                            <barButtonItem title="Готово" id="rMQ-GT-6Np">
-                                                <color key="tintColor" red="0.1529411765" green="0.33333333329999998" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <connections>
-                                                    <action selector="selectDate:" destination="BYZ-38-t0r" id="kzm-wP-R3L"/>
-                                                </connections>
-                                            </barButtonItem>
-                                        </items>
-                                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </toolbar>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="y5p-Lv-ezu">
-                                        <rect key="frame" x="0.0" y="353" width="375" height="206"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="206" id="E7Y-ak-wTH"/>
-                                        </constraints>
-                                        <date key="date" timeIntervalSinceReferenceDate="512872735.08369899">
-                                            <!--2017-04-03 00:38:55 +0000-->
-                                        </date>
-                                    </datePicker>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="7N9-BY-9bd" firstAttribute="leading" secondItem="NIb-Zp-nwv" secondAttribute="leading" id="4XG-Uf-5iY"/>
-                                    <constraint firstItem="7N9-BY-9bd" firstAttribute="top" secondItem="NIb-Zp-nwv" secondAttribute="top" id="Aa1-Ui-wMw"/>
-                                    <constraint firstAttribute="trailing" secondItem="7N9-BY-9bd" secondAttribute="trailing" id="G8w-Ox-Rfj"/>
-                                    <constraint firstItem="y5p-Lv-ezu" firstAttribute="leading" secondItem="NIb-Zp-nwv" secondAttribute="leading" id="Hyf-gX-dRB"/>
-                                    <constraint firstAttribute="trailing" secondItem="y5p-Lv-ezu" secondAttribute="trailing" id="atu-DX-aGQ"/>
-                                    <constraint firstAttribute="bottom" secondItem="y5p-Lv-ezu" secondAttribute="bottom" id="hKG-0J-uEy"/>
-                                </constraints>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upc-34-fj6">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="491"/>
                                 <subviews>
@@ -161,11 +118,7 @@
                             <constraint firstAttribute="trailing" secondItem="upc-34-fj6" secondAttribute="trailing" id="H9r-me-OrO"/>
                             <constraint firstAttribute="trailing" secondItem="lTc-xr-D08" secondAttribute="trailing" constant="12" id="OuB-ep-peO"/>
                             <constraint firstItem="lTc-xr-D08" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="12" id="Tww-Ny-2Ik"/>
-                            <constraint firstAttribute="bottom" secondItem="NIb-Zp-nwv" secondAttribute="bottom" id="fJ1-QG-Ft5"/>
                             <constraint firstItem="lTc-xr-D08" firstAttribute="top" secondItem="upc-34-fj6" secondAttribute="bottom" id="j4B-i2-rYn"/>
-                            <constraint firstAttribute="trailing" secondItem="NIb-Zp-nwv" secondAttribute="trailing" id="k0w-1C-kRe"/>
-                            <constraint firstItem="NIb-Zp-nwv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mZO-k7-EZJ"/>
-                            <constraint firstItem="NIb-Zp-nwv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="md1-Io-ffj"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
@@ -183,8 +136,6 @@
                     <connections>
                         <outlet property="backwardDateView" destination="2Bd-tj-ear" id="j83-5Q-JGI"/>
                         <outlet property="bookingView" destination="ZkK-jl-X98" id="VxZ-Cg-Kod"/>
-                        <outlet property="calendarView" destination="NIb-Zp-nwv" id="w1p-Zw-5oG"/>
-                        <outlet property="datePicker" destination="y5p-Lv-ezu" id="QDY-Ku-wBf"/>
                         <outlet property="forwardDateView" destination="65Q-of-DpM" id="hGz-av-aAL"/>
                         <outlet property="passengerView" destination="TJf-m6-U0U" id="WlF-6k-Obk"/>
                         <outlet property="searchButton" destination="lTc-xr-D08" id="g8d-YH-g0n"/>
